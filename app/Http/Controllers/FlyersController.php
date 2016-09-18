@@ -40,7 +40,7 @@ class FlyersController extends Controller
     {
         Flyer::create($request->all());
 
-        // flash success / error message
+        flash('Success!', 'Your flyer has been created');
 
         return redirect()->back(); // temp
     }
