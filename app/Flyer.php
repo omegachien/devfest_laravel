@@ -18,18 +18,29 @@ class Flyer extends Model
     ];
 
     /**
-     * Scope query to those located at given address.
+     * Find the flyer located at given address.
      *
-     * @param Builder $query
      * @param string $zip
      * @param string $street
      * @return Builder
+     * @internal param Builder $query
      */
-    public function scopeLocatedAt($query, $zip, $street)
+    public static function locatedAt($zip, $street)
     {
         $street = str_replace('-', ' ', $street);
 
-        return $query->where(compact('zip', 'street'));
+        return static::where(compact('zip', 'street'))->first();
+    }
+
+    /**
+     * Save the photo
+     *
+     * @param Photo $photo
+     * @return Model
+     */
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
     }
 
     public function getPriceAttribute($price)

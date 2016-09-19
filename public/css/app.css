@@ -5769,6 +5769,9 @@ button.close {
 .form-control {
   height: 40px; }
 
+img {
+  width: 100%; }
+
 body {
   padding-top: 70px; }
 
