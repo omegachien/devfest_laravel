@@ -48,18 +48,22 @@ class FlyersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $zip
+     * @param $street
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function show($id)
+    public function show($zip, $street)
     {
-        //
+        $flyer = Flyer::locatedAt($zip, $street)->first();
+
+        return view('flyers.show', compact('flyer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +74,8 @@ class FlyersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +86,7 @@ class FlyersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
