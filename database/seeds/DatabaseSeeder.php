@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        for($i = 0; $i < 3; $i++){
+            $flyer = factory(App\Flyer::class)->create();
+            $this->command->info(sprintf('%s / %s created', $flyer->zip, $flyer->street));
+        }
     }
 }

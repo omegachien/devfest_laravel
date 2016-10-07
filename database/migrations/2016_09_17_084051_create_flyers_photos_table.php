@@ -17,6 +17,7 @@ class CreateFlyersPhotosTable extends Migration
             $table->increments('id');
             $table->integer('flyer_id')->unsigned();
             $table->string('path');
+            $table->string('thumbnail_path');
             $table->timestamps();
 
             $table->foreign('flyer_id')->references('id')->on('flyers')->onDelete('cascade');

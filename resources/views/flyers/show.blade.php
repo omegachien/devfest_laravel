@@ -14,9 +14,21 @@
       </div>
     </div>
 
-    <div class="col-md-9">
-      @foreach($flyer->photos as $photo)
-        <img src="{{ url($photo->path) }}" alt="">
+    {{--<div class="col-md-9">--}}
+      {{--@foreach($flyer->photos as $photo)--}}
+        {{--<img src="{{ url($photo->path) }}" alt="">--}}
+      {{--@endforeach--}}
+    {{--</div>--}}
+
+    <div class="col-md-8 gallery">
+      @foreach($flyer->photos->chunk(3) as $set)
+        <div class="row" style="padding-top:20px;">
+          @foreach($set as $photo)
+            <div class="col-md-4 gallery_item">
+              <img src="{{ url($photo->thumbnail_path) }}" alt="">
+            </div>
+          @endforeach
+        </div>
       @endforeach
     </div>
 
